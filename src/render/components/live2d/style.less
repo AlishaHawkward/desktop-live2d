@@ -1,0 +1,24 @@
+#landlord {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 320px;
+  height: 350px;
+  z-index: 1;
+  user-select: none;
+  overflow: visible;
+  * {
+    overflow: visible;
+  }
+  #live2d {
+    position: relative;
+    transition: all .3s ease-out;
+    &.opacity {
+      opacity: .2;
+    }
+  }
+  &.lock {
+    transition: bottom .5s ease-in-out;
+    bottom: 0 !important;
+  }
+}

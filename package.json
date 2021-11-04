@@ -1,0 +1,83 @@
+{
+  "name": "desktop-live2d",
+  "version": "0.0.2",
+  "main": "dist/main/background.js",
+  "description": "desktop-live2d",
+  "homepage": "https://github.com/AlishaHawkward/desktop-live2d",
+  "license": "MIT",
+  "author": {
+    "name": "YoumuKonpaku",
+    "email": "kanade@acgme.cn"
+  },
+  "repository": {
+    "url": "https://github.com/AlishaHawkward/desktop-live2d.git"
+  },
+  "build": {
+    "appId": "com.youmukonpaku.desktop.live2d",
+    "productName": "desktopLive2D",
+    "copyright": "YoumuKonpaku",
+    "mac": {
+      "icon": "build/icons/mac/icon.icns"
+    },
+    "win": {
+      "icon": "build/icons/win/icon.ico"
+    },
+    "linux": {
+      "icon": "build/icons/png/512x512.png"
+    },
+    "files": [
+      "node_modules",
+      "dist/main/**",
+      "dist/render/**"
+    ],
+    "extraResources": [
+      "build/icons/**"
+    ],
+    "electronDownload": {
+      "mirror": "https://npmmirror.com/mirrors/electron/"
+    },
+    "nsisWeb": {
+      "appPackageUrl": "https://npmmirror.com/mirrors/electron-builder-binaries/"
+    }
+  },
+  "scripts": {
+    "dev": "concurrently -k -n=react,electron -c=green,blue \"npm run dev:react\" \"npm run dev:electron\"",
+    "dev:react": "vite",
+    "dev:electron": "cross-env NODE_ENV=development node build/electron.js",
+    "build": "npm run build:react && npm run build:electron",
+    "build:react": "vite build",
+    "build:electron": "cross-env NODE_ENV=production node build/electron.js && electron-builder build --publish never",
+    "serve:react": "vite preview",
+    "clean": "rm -rf dist",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "whatwg-fetch": "^3.6.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.29",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "@vitejs/plugin-react": "^1.0.4",
+    "concurrently": "^6.3.0",
+    "cross-env": "^7.0.3",
+    "electron": "^15.1.2",
+    "electron-builder": "^22.13.1",
+    "electron-connect": "^0.6.3",
+    "esbuild": "^0.13.6",
+    "eslint": "^8.0.1",
+    "eslint-config-ali": "^12.2.2",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "less": "^4.1.2",
+    "typescript": "^4.4.4",
+    "vite": "^2.6.7",
+    "vite-plugin-eslint": "^1.3.0"
+  }
+}
