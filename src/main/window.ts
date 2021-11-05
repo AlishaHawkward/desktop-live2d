@@ -1,12 +1,14 @@
-import { app, BrowserWindow } from 'electron';
+import { app, screen, BrowserWindow } from 'electron';
 import path from 'path';
 
 export let win: BrowserWindow;
 
 export default () => {
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    x: 0,
+    y: screen.getPrimaryDisplay().bounds.height - 350,
+    width: 320,
+    height: 350,
     frame: false,
     transparent: true,
     alwaysOnTop: true,
@@ -24,7 +26,7 @@ export default () => {
     win.setSkipTaskbar(true);
   }
   win.setIgnoreMouseEvents(true);
-  win.maximize();
+  // win.maximize();
 
   win.once('ready-to-show', () => {
     win.show();
